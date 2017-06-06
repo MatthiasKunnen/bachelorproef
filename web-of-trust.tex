@@ -1,0 +1,173 @@
+\chapter{Web of trust}
+\label{ch:web-of-trust}
+
+Sinds CAs niet altijd te vertrouwen zijn, ontstond uit de nood voor een
+betrouwbaar authenticatie systeem het concept van een web of trust. Afgekort
+WOT. Dit systeem werkt met een gedecentraliseerd model waarbij niet wordt
+vertrouwd op CAs.
+
+Het systeem werkt aan de hand van een soort sleutelhanger waarin alle sleutels
+worden opgeslagen. Deze sleutelhanger wordt naar gerefereerd met het woord
+‘ring’. Deze ring bevat publieke sleutels van entiteiten. In tegenstelling tot
+een centrale autoriteit wordt hier enkel door de beheerder van de ring, sleutels
+toegevoegd. De beheerder van de ring beslist ook in hoeverre sleutels vertrouwd
+worden.
+
+Een WOT werd ontwikkeld voor PGP (pretty good privacy). Wegens licentieproblemen
+werd een nieuwe standaard ontwikkelt die OpenPGP werd genoemd. GnuPG is een
+gratis implementatie van de OpenPGP standaard gemaakt door de Free Software
+Foundation. In deze bachelorproef zal, wanneer gesproken wordt van een Web Of
+Trust, uitgegaan worden van OpenPGP als men spreekt over de standaard en over
+GPG als over een toepassing wordt gesproken.
+
+Implementaties die conform zijn aan de OpenPGP standaard bevatten een
+vertrouwensschema. Een sleutel kan de volgende vertrouwensniveaus hebben:
+
+\begin{itemize}
+	\item Unknown
+
+	Niets is bekend over het oordeel van de eigenaar van de sleutel in het
+	ondertekenen van sleutels.
+
+	\item None
+
+	De eigenaar staat bekend om het incorrect ondertekenen van andere sleutels.
+
+	\item Marginal
+
+	De eigenaar verstaat wat de implicaties zijn van het ondertekenen van een
+	sleutel en zal deze vooraf ondertekenen.
+
+	\item Full
+
+	De ondertekening van deze sleutel is even goed als je eigen ondertekening.
+	\autocite{GNUManual}
+\end{itemize}
+
+Een andere term in de OpenPGP standaard is geldigheid. Deze is verschillend van
+vertrouwen. Enerzijds is er het vertrouwen in een eigenaar om andere sleutels te
+valideren, anderzijds is er de geldigheid van een sleutel. De geldigheid van een
+sleutel duid op het al dan niet vertrouwen dat een sleutel in handen is van de
+juiste identiteit.
+Dit schema stelt een gebruiker in staat om de identiteit van een sleutel te
+verifiëren zonder deze zelf te valideren maar zonder controle te verliezen van
+wie deze rechten heeft. Een sleutel die ondertekent is door een sleutel die
+volledig vertrouwen geniet zal geldig zijn. Een sleutel die ondertekent is door
+drie marginaal vertrouwde sleutels zal ook geldig zijn. Dit aantal kan aangepast
+worden zodat een WOT flexibel kan zijn \autocite{GNUManualValidatingKeys}.
+
+\section{Keyservers}
+\label{sec:keyservers}
+
+Het verspreiden van je publieke sleutel wordt natuurlijk best gedaan in persoon.
+Wanneer het aantal personen waarmee je data uitwisselt toeneemt, wordt dit
+moeilijker. Keyservers zijn servers waar je keys van kunt importeren en keys
+naar kunt exporteren. Wanneer Alice Bob zijn sleutel ondertekent, dan zal Alice
+de ondertekende sleutel exporteren naar een keyserver zodat anderen kunnen zien
+dat Alice deze heeft ondertekend. Iedereen kan keys uploaden naar de keyservers
+en deze doen zelf geen verificatie van de validiteit of betrouwbaarheid van
+sleutels. Verificatie van sleutels is altijd de verantwoordelijkheid van degene
+die een sleutel importeert. Er zijn vele keyservers bereikbaar en het merendeel
+hiervan synchroniseert met elkaar, het maakt dus niet echt uit naar welke
+keyserver je de key uploadt. Sinds keyservers enkel publieke sleutels bijhouden
+en deze toch overal bekend mogen zijn, is het ook niet nodig om over een veilig
+kanaal je sleutel te uploaden \autocite{GNUManualDistributingKeys}.
+
+Keyservers staan niet toe om sleutels te verwijderen. Dit is om het WOT te
+beschermen tegen ongeautoriseerde verwijderingen.
+
+Keyservers hoeven niet per se publiek te zijn. Het is mogelijk om een keyserver
+in het interne netwerk van een bedrijf te laten functioneren. Dit soort
+keyserver wordt een private keyserver genoemd. Dergelijke private keyservers
+bieden het voordeel dat ze niet publiekelijk doorzoekbaar zijn. Hierdoor is het
+niet mogelijk om als buitenstaander de e-mailadressen van alle werknemers te
+vinden en hierna e-mails te sturen naar e-mailadressen die niet bedoeld zijn om
+extern benaderd te worden. Ook geeft dit meer vrijheid aan de beheerders van de
+keyserver om sleutels te verwijderen zonder zich zorgen te maken over oude
+sleutels die op servers staan waar zij geen toegang tot hebben.
+
+\section{Terugtrekken van sleutels in een Web Of Trust}
+\label{sec:terugtrekken-van-sleutels-in-een-wot}
+
+Het verlies van een sleutel en het wachtwoord dat hieraan gelinkt is, heeft tot
+gevolg dat eenieder die hier toegang tot heeft, alle data kan decrypteren die
+met de publieke sleutel is geëncrypteerd. Verder kunnen digitale handtekeningen
+gemaakt. Ook bestaat de kans dat entiteiten blijven data encrypteren met de
+verloren publieke sleutel die je niet meer kunt decrypteren door een gebrek aan
+private sleutel.
+
+Om dit probleem op te lossen bestaat het revocation certificate. Een revocation
+certificate kan enkel gegenereerd worden met de private sleutel. Wanneer een
+private sleutel verloren is, kan dit certificaat gepubliceerd worden waarmee
+wordt tegengegaan dat data wordt geëncrypteerd met de teruggetrokken publieke
+sleutel. Decryptie met de private sleutel en validatie van digitale
+handtekeningen met de publieke sleutel blijft mogelijk.
+\autocite{GNUManualGettingStarted}
+
+Publicatie van een revocation certificate kan door het certificaat te importeren
+in een sleutelring en de teruggetrokken sleutel te verzenden naar een keyserver.
+
+\subsection{Designated revokers}
+\label{subsec:designated-revokers}
+
+Een andere mogelijkheid die in de OpenPGP standaard aanwezig is, zijn designated
+revokers. Een designated revoker is een bezitter van een sleutel die een
+revocation certificate kan genereren en verspreiden van een andere sleutel.
+\autocite{rfc4880} Om een sleutel aan te duiden als designated revoker is het
+nodig om toegang te hebben tot de private sleutel en wachtwoord van de sleutel
+aan wie de designated revoker zal worden toegewezen. Met andere woorden, het
+toewijzen van een designated revoker kan enkel met toestemming van de eigenaar
+van de sleutel. Meerdere sleutels kunnen aangewezen worden om de rol van
+designated revoker te vervullen. Het toevoegen van een designated revoker is
+onomkeerbaar. Dit zorgt voor een ideale mogelijkheid om sleutels terug te
+trekken als derde partij zonder dat hiermee mogelijk is om digitale
+handtekeningen te maken of berichten te encrypteren en decrypteren in de naam
+van de eigenaar van de sleutel.
+
+\subsection{Ontvangen van key revocations}
+\label{subsec:ontvangen-van-key-revocations}
+
+Als een persoon zijn revocation certificate uploadt op de keyservers betekend
+dit nog niet dat elke correspondent deze herroeping ontvangt. Hiervoor moet de
+eigenaar van een ring de sleutels controleren op updates. Dit kan gedaan worden
+via het volgende commando \autocite{GnuPGFAQ}.
+
+\begin{lstlisting}[language=bash]
+$ gpg --refresh-keys
+\end{lstlisting}
+
+Men kan ook een daemon gebruiken zoals parcimonie om de sleutels op de ring te
+updaten zonder aan de keyservers te tonen welke sleutels je geïnteresseerd in
+bent. Dit systeem werkt via TOR. Anonimiteit bij het gebruik van een Web Of
+Trust valt echter buiten het domein van deze bachelorproef
+\autocite{RiseUpOpenPGPBestPractices}.
+
+\section{Wat kan dit oplossen}
+\label{sec:wat-kan-dit-oplossen}
+
+De Web Of Trust implementatie leidt tot het oplossen van authenticatie,
+integriteit en toerekenbaarheid. Een identiteit kan bewijzen wie hij of zij is
+door het ondertekenen van data doordat het bezit van de private sleutel en
+wachtwoord de authenticatie bevestigd. Integriteit van data kan bewezen worden
+door de handtekening van een bericht te valideren. Het ondertekenen van een
+bericht of contract kan niet ontkend worden doordat een handtekening enkel
+succesvol gevalideerd kan worden via een unieke sleutel en dan de enige persoon
+met toegang tot de private sleutel en het wachtwoord hiervan, de eigenaar van de
+sleutel is.
+
+Specifiek zou dit het volgende oplossen in het voorbeeldverhaal. Wanneer Thomas
+aan Jim beveelt om betaling te verrichten en hij later door heeft dat hij zich
+vergist heeft, kan hij niet ontkennen dat hij de betaling aangevraagd heeft. Dit
+zuivert Jim van blaam. Hiervoor is echter vereist dat Thomas het bericht waarin
+hij de betaling aanvraagt, ondertekend. Het is daarom ook best als alle
+communicatie in het bedrijf verplicht standaard digitaal ondertekend zijn.
+
+In het geval dat een impersonator van Thomas probeert om Jim te overtuigen om
+een betaling te doen, zal Jim vragen voor een digitaal ondertekend bericht als
+bevestiging. Een impersonator zal geen toegang hebben tot de private sleutel van
+Thomas en dus geen digitale handtekening kunnen maken hiermee. Dit zou het einde
+moeten zijn van deze soort fraude. Indien de impersonator toegang zou hebben tot
+de private sleutel van Thomas en het wachtwoord hiervan, dan zijn er zeer grote
+consequenties. Het veiligstellen van de sleutels en wachtwoord is een apart
+hoofdstuk en wordt later op teruggekomen.
+

@@ -1,0 +1,81 @@
+\chapter{Voorbeelden van problemen}
+\label{ch:voorbeelden-van-problemen}
+
+Het volgende voorbeeld zal gebruikt worden in deze bachelorproef om aan te tonen
+hoe een bepaalde techniek bepaalde problemen oplossen.
+Een overeenkomst wordt gesloten met een externe partij, Y, om een product te
+kopen van 20000 euro.
+
+Bedrijf: Het bedrijf, X, betreft een onderneming met 20 personen werkende in het
+financieel departement.
+
+\section{Persona’s}
+
+\subsection{James, verantwoordelijke aankopen}
+Beide partijen komen tot de overeenkomst om X een product te verkopen van 20000
+euro. James moet echter nog goedkeuring hebben van Maarten en Thomas vanwege het
+grote bedrag. Y zal in een der volgende werkdagen een factuur doorsturen die X
+moet betalen binnen de 7 dagen om een grote korting te ontvangen. Deze factuur
+zal ontvangen worden door Jim.
+
+\subsection{Jim, assistent accountant}
+Jim ontvangt een factuur en plant een overschrijving vijf dagen voor de
+vervaldatum.
+
+\subsection{Maarten, hoofd van het financieel departement}
+Maarten weet van de algemene cashflow in het bedrijf maar specifieke kleinere
+zaken laat hij over aan zijn medewerkers.
+
+\subsection{Thomas, CFO}
+Voor grote bedragen is zijn toestemming vereist.
+
+\section{Waar kan het misgaan}
+Stel dat Y een factuur verstuurd die een groter bedrag of een verkeerd product
+bevat en de betaling doorgaat, is er niets meer aan te doen. Om dit te
+controleren zou Jim het bedrag en het product moeten laten controleren door
+James en anderen die deze deal gesloten hebben \autocite{VanDenBulckeTom}.
+
+Stel dat Thomas een spoedfactuur doorgestuurd krijgt met de opdracht om direct
+te betalen want anders zou het bedrijf een exorbitante boete te krijgen en
+direct Jim opbelt met de opdracht om een bepaald bedrag te storten naar een
+bepaalde rekening. Jim, die Thomas niet kent, zal niet tegensputteren tegen de
+CFO over eventuele authenticatie van dit verzoek. Dit kan echter een geval van
+whale phishing zijn. Nadat het geld verloren is geraakt op een rekening is het
+niet onwaarschijnlijk dat de schuld van het verlies aan Jim toegerekend kan
+worden. Plausibel verklaard door \textcite{VanDenBulckeTom}.
+
+Jim zou ook kunnen opgebeld kunnen worden door een persoon die zich voortdoet
+als Thomas. Hetzelfde resultaat, schade door gebrek aan authenticatie, kan hier
+voorkomen \autocite{VanDenBulckeTom, VanDerBeekImpersonatieMarqit}.
+
+Een ander mogelijk probleem is stel dat alle partijen een betaling goedkeuren en
+Maarten tijdens het opmaken van de overschrijving een typefout maakt. Deze
+menselijke fouten zijn snel gemaakt \autocite{VanDenBulckeTom, DeprezArne}.
+
+Wat ook kan gebeuren is dat iemand met toegang tot het betalingssysteem een
+overschrijving aanmaakt/wijzigt zonder anderen te consulteren. Uit al dan niet
+slechte of goede bedoelingen kan dit tot problemen leiden
+\autocite{VanDenBulckeTom, DeprezArne}.
+
+Indien een persoon toegang heeft tot een geautoriseerd systeem waarop betalingen
+kunnen gemaakt worden is het zelfs mogelijk om met deze fraude weg te geraken
+\autocite{VanDenBulckeTom}.
+
+\section{Impersonatie}
+Er is een stijging van het aantal gevallen van impersonatie van een individu die
+hoog in de hiërarchische structuur van een bedrijf staat. Dit soort aanval is
+een social engineering aanval waarbij de aanvaller onderzoek doet naar een
+individu die werkt in of in contact staat met bedrijf en hierna zich voordoet
+als deze persoon. Over het algemeen probeert de aanvaller een snelle
+overschrijving of dergelijke te verkrijgen naar een rekening die onder controle
+staat van de aanvaller \autocite{VanDerBeekImpersonatieMarqit,
+	DeignImpersonatieTheGuardian}. De reden waarom dit werkt ligt over het algemeen
+aan het feit dat degene die wordt gevraagd om de overschrijving uit te voeren,
+de identiteit van de vragende partij niet kan bevestigen. Dit zal later
+beschreven worden als onuitgevoerde authenticatie.
+
+\section{Interne criminaliteit}
+Bedrijven krijgen ook criminaliteit van binnen de organisatie te verduren.
+Economische criminaliteit komt voor bij 73 percent van de bedrijven, zo vond een
+studie van de PwC. Het percent hiervan dat intern is, bedraagt 46 percent.
+\autocite{EconomicCrimeSurvey, Ashford2015}
