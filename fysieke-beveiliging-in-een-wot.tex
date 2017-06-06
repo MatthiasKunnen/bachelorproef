@@ -66,7 +66,8 @@ In stap één scant de gebruiker de elektronische kaart. De sleutels op de kaart
 C\textsubscript{pub}, A\textsubscript{pub} en A\textsubscript{priv} worden
 doorgestuurd naar de server. De server controleert of C\textsubscript{pub} door
 de hoofdsleutel(s) ondertekend is, en de sleutel niet teruggetrokken is.
-Vervolgens controleert de server of Apub ondertekent is door het sleutelpaar C.
+Vervolgens controleert de server of A\textsubscript{pub} ondertekent is door het
+sleutelpaar C.
 Indien dit zo is, zal de server een bericht genereren dat een timestamp bevat.
 Hierna, in stap drie en vier, zal de server vragen om dit bericht te
 ondertekenen. Het individu dat zich nu wilt authenticeren moet zijn of haar PIN
@@ -84,7 +85,7 @@ heeft tot een plaats zonder een PIN in te geven.
 
 Er is nog één probleem dat moet opgelost worden. De private sleutel wordt
 momenteel nog altijd op de badge opgeslagen zonder enige vorm van beveiliging.
-Dit betekend dat enkel een PIN de private sleutel beschermt. Een mogelijk
+Dit betekent dat enkel een PIN de private sleutel beschermt. Een mogelijke
 oplossing is een speciaal sleutelpaar aanmaken waarvan de private sleutel op de
 access control server staat. De A\textsubscript{priv} sleutel wordt vervolgens
 versleuteld met de publieke sleutel van de access control server en
@@ -135,7 +136,7 @@ eerste parameter gelijk is aan de gebruikte sleutel en de tweede parameter
 gelijk aan het bericht. Deze handtekening en nonce worden verstuurd naar de
 server. Deze zoekt naar de opgeslagen nonce en valideert de handtekening
 vervolgens met de opgeslagen publieke sleutel. Indien deze correct zijn, wordt
-dit bevestigt aan het werkstation van de medewerker. Hierna wordt de nonce en de
+dit bevestigd aan het werkstation van de medewerker. Hierna wordt de nonce en de
 handtekening ervan op de badge opgeslagen.
 
 Wanneer de medewerker zich authenticeerd bij een fysiek toegang controlerend
