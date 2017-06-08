@@ -242,7 +242,10 @@ de sleutel overeenkomt. Bij succesvolle vergelijking wordt Tim zijn sleutel
 ondertekend door de centrale sleutel en daarna geëxporteerd naar de private
 keyserver van het bedrijf. Tim importeert zijn publieke sleutel van de private
 keyserver zodat hij de ondertekening van zijn sleutel door de centrale
-sleutel(s) lokaal heeft. Nu kan Tim aan het werk. Iedereen die een digitale
+sleutel(s) lokaal heeft. Deze handeling wordt verricht om te verzekeren dat als
+een medewerker de sleutel importeert via het USB apparaat, de ondertekening door
+de centrale sleutel(s) direct zichtbaar is. Nu kan Tim aan het werk. Iedereen
+die een digitale
 handtekening tegenkomt van Tim of wilt communiceren met Tim zal zien dan zijn
 sleutel wordt vertrouwd.
 
@@ -296,7 +299,10 @@ De database bevat namelijk \textit{H(H(p))} en als \textit{H(H(p))} wordt
 ingegeven tijdens een aanmelding zal de vergelijking
 \textit{H(H(H(p)))~=~H(H(p))} worden. Dit zal natuurlijk een foutieve
 aanmeldingspoging tot gevolg
-hebben.
+hebben. Alhoewel een aanvaller niets kan doen met de geëncrypteerde container,
+zou het succesvol aanmelden op de cloud omgeving tot gevolg kunnen hebben dat de
+aanvaller toegang heeft tot een interface waarin containers kunnen beheerd
+worden. Hierna zou de aanvaller eventueel een container kunnen verwijderen.
 
 Een dienst zoals dit opzetten vereist een grote kennis van zowel encryptie als
 netwerking. Het is daarom niet aangeraden om een dienst zoals dit zelf te maken
