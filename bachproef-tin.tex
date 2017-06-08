@@ -44,7 +44,7 @@
 %% Inhoud document
 %%=============================================================================
 
-\newcommand*{\fullref}[1]{\hyperref[{#1}]{\ref*{#1}: \textit{\nameref*{#1}}}} % One single link
+\usepackage{pdfpages}
 \expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks%  save the
 %current one
 	\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
@@ -54,6 +54,8 @@
 	\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
 	\do\Y\do\Z}
 
+%One single link
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{\ref*{#1}:~\textit{\nameref*{#1}}}}
 
 \begin{document}
 
@@ -107,5 +109,7 @@
 
 \listoffigures
 \listoftables
+
+\input{bijlagen}
 
 \end{document}
