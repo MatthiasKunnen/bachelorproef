@@ -2,7 +2,7 @@
 \label{ch:web-of-trust}
 
 Sinds CAs niet altijd te vertrouwen zijn, ontstond uit de nood voor een
-betrouwbaar authenticatie systeem het concept van een web of trust. Afgekort
+betrouwbaar authenticatie systeem het concept van een web of trust, afgekort
 WOT. Dit systeem werkt met een gedecentraliseerd model waarbij niet wordt
 vertrouwd op CAs.
 
@@ -47,11 +47,11 @@ vertrouwensschema. Een sleutel kan de volgende vertrouwensniveaus hebben:
 Een andere term in de \gls{OpenPGP} standaard is geldigheid. Deze is verschillend van
 vertrouwen. Enerzijds is er het vertrouwen in een eigenaar om andere sleutels te
 valideren, anderzijds is er de geldigheid van een sleutel. De geldigheid van een
-sleutel duid op het al dan niet vertrouwen dat een sleutel in handen is van de
+sleutel duidt op het al dan niet vertrouwen dat een sleutel in handen is van de
 juiste identiteit.
 Dit schema stelt een gebruiker in staat om de identiteit van een sleutel te
 verifiëren zonder deze zelf te valideren maar zonder controle te verliezen van
-wie deze rechten heeft. Een sleutel die ondertekent is door een sleutel die
+wie deze rechten heeft. Een sleutel die ondertekend is door een sleutel die
 volledig vertrouwen geniet zal geldig zijn. Een sleutel die ondertekent is door
 drie marginaal vertrouwde sleutels zal ook geldig zijn. Dit aantal kan aangepast
 worden zodat een WOT flexibel kan zijn \autocite{GNUManualValidatingKeys}.
@@ -92,7 +92,7 @@ sleutels die op servers staan waar zij geen toegang tot hebben.
 Het verlies van een sleutel en het wachtwoord dat hieraan gelinkt is, heeft tot
 gevolg dat eenieder die hier toegang tot heeft, alle data kan decrypteren die
 met de publieke sleutel is geëncrypteerd. Verder kunnen digitale handtekeningen
-gemaakt. Ook bestaat de kans dat entiteiten blijven data encrypteren met de
+gemaakt worden. Ook bestaat de kans dat entiteiten blijven data encrypteren met de
 verloren publieke sleutel die je niet meer kunt decrypteren door een gebrek aan
 private sleutel.
 
