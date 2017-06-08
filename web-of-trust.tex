@@ -1,10 +1,10 @@
 \chapter{Web of trust}
 \label{ch:web-of-trust}
 
-Sinds CAs niet altijd te vertrouwen zijn, ontstond uit de nood voor een
+Sinds \acrshort{CA}s niet altijd te vertrouwen zijn, ontstond uit de nood voor een
 betrouwbaar authenticatie systeem het concept van een web of trust, afgekort
-WOT. Dit systeem werkt met een gedecentraliseerd model waarbij niet wordt
-vertrouwd op CAs.
+\acrshort{WOT}. Dit systeem werkt met een gedecentraliseerd model waarbij niet wordt
+vertrouwd op \acrshort{CA}s.
 
 Het systeem werkt aan de hand van een soort sleutelhanger waarin alle sleutels
 worden opgeslagen. Deze sleutelhanger wordt naar gerefereerd met het woord
@@ -13,7 +13,7 @@ een centrale autoriteit wordt hier enkel door de beheerder van de ring, sleutels
 toegevoegd. De beheerder van de ring beslist ook in hoeverre sleutels vertrouwd
 worden.
 
-Een WOT werd ontwikkeld voor \gls{PGP}. Wegens licentieproblemen
+Een \acrshort{WOT} werd ontwikkeld voor \gls{PGP}. Wegens licentieproblemen
 werd een nieuwe standaard ontwikkelt die \gls{OpenPGP} werd genoemd. GnuPG is een
 gratis implementatie van de \gls{OpenPGP} standaard gemaakt door de Free Software
 Foundation. In deze bachelorproef zal, wanneer gesproken wordt van een Web Of
@@ -54,7 +54,7 @@ verifiëren zonder deze zelf te valideren maar zonder controle te verliezen van
 wie deze rechten heeft. Een sleutel die ondertekend is door een sleutel die
 volledig vertrouwen geniet zal geldig zijn. Een sleutel die ondertekent is door
 drie marginaal vertrouwde sleutels zal ook geldig zijn. Dit aantal kan aangepast
-worden zodat een WOT flexibel kan zijn \autocite{GNUManualValidatingKeys}.
+worden zodat een \acrshort{WOT} flexibel kan zijn \autocite{GNUManualValidatingKeys}.
 
 \section{Keyservers}
 \label{sec:keyservers}
@@ -73,7 +73,8 @@ keyserver je de key uploadt. Sinds keyservers enkel publieke sleutels bijhouden
 en deze toch overal bekend mogen zijn, is het ook niet nodig om over een veilig
 kanaal je sleutel te uploaden \autocite{GNUManualDistributingKeys}.
 
-Keyservers staan niet toe om sleutels te verwijderen. Dit is om het WOT te
+Keyservers staan niet toe om sleutels te verwijderen. Dit is om het
+\acrshort{WOT} te
 beschermen tegen ongeautoriseerde verwijderingen.
 
 Keyservers hoeven niet per se publiek te zijn. Het is mogelijk om een keyserver
