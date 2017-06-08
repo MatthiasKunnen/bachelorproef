@@ -167,5 +167,66 @@ Sectie \ref{subsec:aankomst-nieuwe-werknemer}
 verschillende karakters gebruiken (ascii tabel - controle characters), dwz
 2\textasciicircum95 (ongeveer 4*10\textasciicircum28) mogelijkheden
 
+\section{Opmerkingen cryptografisch expert na aanpassingen}
+
+> > * " Tim importeert zijn sleutel van de private keyserver [..]" -> \\
+> > Tim importeert zijn *publieke* sleutel \\
+> > -> Je gaat hier de vraag krijgen: waarom moet Tim lokaal een kopie \\
+> > hebben van zijn door de server ondertekende sleutel? Volgens mij is \\
+> > dat niet echt noodzakelijk? Iemand die met Tim wil communiceren kan \\
+> > toch evengoed Tim's sleutel van de private keyserver afhalen? Zal \\
+> > Tim altijd zijn USB stick moeten bovenhalen om zijn sleutel te \\
+> > delen? Is het zo onredelijk dat een interne private keyserver \\
+> > minder te vertrouwen dan een USB stick? \\
+> \\
+> De reden dat ik dit doet is bijvoorbeeld als Tim zijn public key \\
+> bevestigt aan een e-mail, dat de ondertekening door de centrale \\
+> sleutel dan al meekomt zonder nog een gpg --refresh-keys uit te \\
+> voeren. Alhoewel het refreshen van de sleutel misschien altijd moet \\
+> gebeuren om key revocations te controleren. \\
+
+Ah, dus dan gaat iemand die Tim's publieke sleutel vanaf Tim's USB stick \\
+afhaalt meteen al zien dat de centrale key server hem al heeft gesignd. \\
+Dat kan je er misschien nog wel bij vermelden. \\
+
+Ik vraag me wel af: wanneer de centrale key server Tim's sleutel
+ondertekent, kan de centrale keyserver dan meteen de gesignde publieke
+sleutel niet aanbieden aan het hele bedrijf? Zodat, wanneer iemand met
+Tim wil versleuteld emailen, hij gpg --recv-key <fingerprint> kan
+uitvoeren, en niet moet wachten tot Tim eens op kantoor is met zijn USB
+stick?
+
+
+> Bij het voorbeeld \textit{H(H(p))} heb je gelijk dat Mallory niets is met de \\
+> geëncrypteerde container. Dit was niet echt bedoeld als beveiliging \\
+> tegen een MITM maar eerder in het geval dat er een database breach is \\
+> en de inloggegevens lekken. In dat geval kan doorgeven van \textit{H(p)} \\
+> toegang krijgt tot een interface die je in staat stelt tot het beheren \\
+> van je containers (aanmaken, verwijderen, ...). Maar het doorgeven van \\
+> \textit{H(H(p))} zou niets bereiken. \\
+
+Hierin heb je volstrikt gelijk. Vermeld dat ook zeker in je bachelorpaper!
+
+
+> Over het vervallen van wachtwoorden zeg je dat eens vervallen per jaar \\
+> een acceptabel compromis is. Het NIST zegt echter (in de citering van \\
+> de vorige paragraaf) dat dit niet meer aangeraden word. \\
+
+Daarvan was ik niet op de hoogte. Misschien ook het vermelden waard
+
+> Wat betreft de Apriv die tijdelijk gedecrypteerd, dit zou gebeuren op \\
+> server niveau. Dus de private sleutel van de /access control/ server \\
+> zou niet op kaart staan. Ik probeer eigenlijk te vermijden dat een \\
+> kaart ongemerkt wordt uitgelezen en dan de PIN ge-bruteforced wordt. \\
+> Jouw oplossing met het controleren van de sleutel op de kaartlezer zou \\
+> ideaal zijn maar ik vrees ook dat dit soort kaart niet bestaat. \\
+
+Er bestaan wel kaarten die blokkeren nadat driemaal een verkeerde PIN
+code ingegeven wordt. Misschien is zo'n systeem ook een alternatief?
+Schrijf in ieder geval ook op je scenario op. M.a.w. dat je je probeert
+te beschermen tegen bruteforce op de PIN code wanneer iemand de kaart
+onrechtmatig bemachtigd heeft en erin slaagt om de data die erop staat
+met een third party kaartlezer uit te lezen.
+
 \section{Bachelorproefvoorstel}
 \includepdf[pages={-}]{kunnen-matthias-voorstel.pdf}
