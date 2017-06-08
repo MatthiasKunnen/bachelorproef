@@ -43,6 +43,9 @@
 %%=============================================================================
 %% Inhoud document
 %%=============================================================================
+\usepackage{glossaries}
+\makenoidxglossaries
+\loadglsentries{glossary}
 
 \usepackage{pdfpages}
 \expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks%  save the
@@ -82,6 +85,8 @@
 %---------- Lijst afkortingen, termen -----------------------------------------
 %% Als je een lijst van afkortingen of termen wil toevoegen, dan hoort die
 %% hier thuis. Gebruik bijvoorbeeld de ``glossaries'' package.
+\glossarystyle{listgroup}
+\printnoidxglossaries
 
 %%---------- Kern -------------------------------------------------------------
 

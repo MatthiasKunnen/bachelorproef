@@ -13,14 +13,14 @@ een centrale autoriteit wordt hier enkel door de beheerder van de ring, sleutels
 toegevoegd. De beheerder van de ring beslist ook in hoeverre sleutels vertrouwd
 worden.
 
-Een WOT werd ontwikkeld voor PGP (pretty good privacy). Wegens licentieproblemen
-werd een nieuwe standaard ontwikkelt die OpenPGP werd genoemd. GnuPG is een
-gratis implementatie van de OpenPGP standaard gemaakt door de Free Software
+Een WOT werd ontwikkeld voor \gls{PGP}. Wegens licentieproblemen
+werd een nieuwe standaard ontwikkelt die \gls{OpenPGP} werd genoemd. GnuPG is een
+gratis implementatie van de \gls{OpenPGP} standaard gemaakt door de Free Software
 Foundation. In deze bachelorproef zal, wanneer gesproken wordt van een Web Of
-Trust, uitgegaan worden van OpenPGP als men spreekt over de standaard en over
-GPG als over een toepassing wordt gesproken.
+Trust, uitgegaan worden van \gls{OpenPGP} als men spreekt over de standaard en over
+\gls{GPG} als over een toepassing wordt gesproken.
 
-Implementaties die conform zijn aan de OpenPGP standaard bevatten een
+Implementaties die conform zijn aan de \gls{OpenPGP} standaard bevatten een
 vertrouwensschema. Een sleutel kan de volgende vertrouwensniveaus hebben:
 
 \begin{itemize}
@@ -44,7 +44,7 @@ vertrouwensschema. Een sleutel kan de volgende vertrouwensniveaus hebben:
 	\autocite{GNUManual}
 \end{itemize}
 
-Een andere term in de OpenPGP standaard is geldigheid. Deze is verschillend van
+Een andere term in de \gls{OpenPGP} standaard is geldigheid. Deze is verschillend van
 vertrouwen. Enerzijds is er het vertrouwen in een eigenaar om andere sleutels te
 valideren, anderzijds is er de geldigheid van een sleutel. De geldigheid van een
 sleutel duid op het al dan niet vertrouwen dat een sleutel in handen is van de
@@ -110,7 +110,7 @@ in een sleutelring en de teruggetrokken sleutel te verzenden naar een keyserver.
 \subsection{Designated revokers}
 \label{subsec:designated-revokers}
 
-Een andere mogelijkheid die in de OpenPGP standaard aanwezig is, zijn designated
+Een andere mogelijkheid die in de \gls{OpenPGP} standaard aanwezig is, zijn designated
 revokers. Een designated revoker is een bezitter van een sleutel die een
 revocation certificate kan genereren en verspreiden van een andere sleutel.
 \autocite{rfc4880} Om een sleutel aan te duiden als designated revoker is het
@@ -138,17 +138,19 @@ $ gpg --refresh-keys
 
 Men kan ook een daemon gebruiken zoals parcimonie om de sleutels op de ring te
 updaten zonder aan de keyservers te tonen welke sleutels je geïnteresseerd in
-bent. Dit systeem werkt via TOR. Anonimiteit bij het gebruik van een Web Of
+bent. Dit systeem werkt via \gls{TOR}. Anonimiteit bij het gebruik van een Web Of
 Trust valt echter buiten het domein van deze bachelorproef
 \autocite{RiseUpOpenPGPBestPractices}.
 
 \section{Wat kan dit oplossen}
 \label{sec:wat-kan-dit-oplossen}
 
-De Web Of Trust implementatie leidt tot het oplossen van authenticatie,
-integriteit en toerekenbaarheid. Een identiteit kan bewijzen wie hij of zij is
+De Web Of Trust implementatie leidt tot het oplossen van \gls{authenticiteit},
+\gls{integriteit} en \gls{toerekenbaarheid}. Een identiteit kan bewijzen wie hij of
+zij is
 door het ondertekenen van data doordat het bezit van de private sleutel en
-wachtwoord de authenticatie bevestigd. Integriteit van data kan bewezen worden
+wachtwoord de authenticatie bevestigd. \Gls{integriteit} van data kan bewezen
+worden
 door de handtekening van een bericht te valideren. Het ondertekenen van een
 bericht of contract kan niet ontkend worden doordat een handtekening enkel
 succesvol gevalideerd kan worden via een unieke sleutel en dan de enige persoon

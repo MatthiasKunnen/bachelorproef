@@ -1,18 +1,22 @@
-\chapter{Implementatie van een GPG Web Of Trust}
+\chapter{Implementatie van een \glsentrytext{GPG} Web Of Trust}
 \label{ch:implementatie-van-een-gpg-web-of-trust}
 
-Dit hoofdstuk behandelt hoe een GPG Web Of Trust kan worden geïmplementeerd in
-een bedrijf. Onder andere wordt de configuratie van GPG onderzocht en de beste
+Dit hoofdstuk behandelt hoe een \gls{GPG} Web Of Trust kan worden
+geïmplementeerd in
+een bedrijf. Onder andere wordt de configuratie van \gls{GPG} onderzocht en
+de beste
 instellingen geconcludeerd.
 
 \section{Gebruikte algoritmes}
 \label{sec:gebruikte-algoritmes}
 
-GPG gebruikt meerdere algoritmes om de publieke/private encryptie en digitale
+\gls{GPG} gebruikt meerdere algoritmes om de publieke/private encryptie en
+digitale
 handtekeningen toe te passen. Het kiezen van het juiste algoritme en de
 configuratie hiervan heeft een impact op veiligheid van de sleutels en de
 compatibiliteit met andere systemen. We vergelijken de belangrijkste algoritmes
-in GPG. Het meest gebruikte algoritme is RSA gevolgd door DSA. ECC, wat staat
+in \gls{GPG}. Het meest gebruikte algoritme is RSA gevolgd door DSA. ECC, wat
+staat
 voor Elliptic Curve Cryptography, is een nieuwer algoritme dat nog aan
 populariteit moet winnen.
 
@@ -55,7 +59,8 @@ gestandaardiseerd zijn, het best is om RSA te gebruiken.
 De bit grootte van een RSA-sleutel was 512 bits vanaf 1974 tot in de jaren 80.
 In de latere jaren 90 werd de aanbevolen grootte verhoogt naar 768 voor
 gebruikers en 1024 voor bedrijven \autocite{OriginalRSAKeySizeRecommendations}.
-In 2015 publiceerde het NIST SP 800-57 dat 2048 aanraadt voor individuen en
+In 2015 publiceerde het \acrshort{NIST} SP 800-57 dat 2048 aanraadt voor
+individuen en
 apparaten. De grootte van 2048 tot 3072 wordt aangeraden voor, onder andere,
 certificaat autoriteiten
 \autocite{NISTKeyManagementRecommendationApplicationSpecific}. De 3072 bit
@@ -128,7 +133,8 @@ Tabel \ref{tab:rsa-speed-test} kan weergegeven als box plot zoals in grafiek
 		\legend{Sign, Verify}
 	\end{axis}
 	\end{tikzpicture}
-	\caption{Weergave van het aantal milliseconden per ondertekening en verificatie
+	\caption{Weergave van het aantal milliseconden per ondertekening en
+		verificatie
 		voor de verschillende bit groottes}
 	\label{fig:rsa-sign-verify-speed-graph}
 \end{figure}
@@ -284,10 +290,11 @@ wachtwoord kan niet onderschept worden door een \textit{Man In The Middle
 
 Indien de database met alle gebruikersnamen en wachtwoorden wordt
 gecompromitteerd kan een aanvaller nog altijd niet de geëncrypteerde container
-buitmaken omdat tijdens de aanmeldpoging het wachtwoord nog eens gehasht wordt.
+buitmaken omdat tijdens de aanmeldpoging het wachtwoord nog eens
+\glslink{hash}{gehasht} wordt.
 De database bevat namelijk \textit{H(H(p))} en als \textit{H(H(p))} wordt
-ingegeven tijdens een aanmelding zal de vergelijking 
-\textit{H(H(H(p)))~=~H(H(p))} worden. Dit zal natuurlijk een foutieve 
+ingegeven tijdens een aanmelding zal de vergelijking
+\textit{H(H(H(p)))~=~H(H(p))} worden. Dit zal natuurlijk een foutieve
 aanmeldingspoging tot gevolg
 hebben.
 
@@ -317,8 +324,8 @@ Figuur \ref{fig:wachtwoord-sterkte-xkcd} toont een bekende XKCD-comic over
 wachtwoord sterkte en de wachtwoord vereisten die vaak gevraagd worden.
 
 Uit een voorstel voor een publicatie (zie
-\textcite{NISTDigitalIdentityGuidelines}) dat het National Institute of
-Standards and Technology, kortweg NIST, gepubliceerd heeft betreffende
+\textcite{NISTDigitalIdentityGuidelines}) dat het \acrlong{NIST}, kortweg
+\acrshort{NIST}, gepubliceerd heeft betreffende
 wachtwoorden en best practices kunnen we enkele zaken concluderen. Wachtwoorden
 moeten minstens 8 karakters lang zijn, dit minimum mag verhoogd worden indien
 het gaat over gevoelige informatie. Het wachtwoord van de geëncrypteerde
@@ -328,7 +335,8 @@ is aangeraden. Wachtwoordzinnen zijn een goede oplossing voor het onthouden van
 langere wachtwoorden zoals de XKCD comic (figuur
 \ref{fig:wachtwoord-sterkte-xkcd}) ook aangeeft.
 
-Het NIST zegt verder dat het laten vervallen van wachtwoorden is afgeraden
+Het \acrshort{NIST} zegt verder dat het laten vervallen van wachtwoorden is
+afgeraden
 aangezien dit de gebruiker niet ten goede komt en kan leiden tot een niet
 veilige manier voor het onthouden van het wachtwoord. Een voorbeeld van wat er
 kan gebeuren in dit geval is wat er gebeurd is met het Franse tv-kanaal
@@ -341,7 +349,8 @@ Wachtwoord tips zijn ten zeerste afgeraden sinds ze teveel kunnen helpen met het
 raden van het wachtwoord door aanvallers. Dit gebeurde na de hack van Adobe
 waarna 150 miljoen wachtwoorden, gebruikersnamen, en wachtwoordhints werden
 buitgemaakt en online gezet. De wachtwoordhints waren zo specifiek dat, door een
-combinatie met een slechte hash/encryptie methode, een grote hoeveelheid van de
+combinatie met een slechte \gls{hash}/encryptie methode, een grote hoeveelheid
+van de
 wachtwoorden herleidbaar was \autocite{HernGuardianAdobeLeak}.
 
 Wachtwoord hergebruik is niet afdwingbaar maar moet sterk afgeraden worden.
@@ -367,7 +376,8 @@ volgende stappen dienen ondernomen te worden. De designated revoker van de
 gecompromitteerde sleutel moet zo snel mogelijk op de hoogte gebracht worden. De
 designated revoker genereert direct een revocation certificate voor de
 gecompromitteerde sleutel. Hierna exporteert de designated revoker dit
-revocation certificate naar de keyserver. De GPG client die op elk werkstation
+revocation certificate naar de keyserver. De \gls{GPG} client die op elk
+werkstation
 van de werknemers staat, zal tijdens het automatisch verversen van sleutels, het
 revocation certificaat binnenhalen. Op deze manier wordt de terugtrekking
 doorheen het netwerk gepropageerd.
