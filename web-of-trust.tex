@@ -1,7 +1,8 @@
 \chapter{Web of trust}
 \label{ch:web-of-trust}
 
-Sinds \acrshort{CA}s niet altijd te vertrouwen zijn, ontstond uit de nood voor een
+Sinds \acrshort{CA}s niet altijd te vertrouwen zijn, ontstond uit de nood voor
+een
 betrouwbaar authenticatie systeem het concept van een web of trust, afgekort
 \acrshort{WOT}. Dit systeem werkt met een gedecentraliseerd model waarbij niet wordt
 vertrouwd op \acrshort{CA}s.
@@ -91,11 +92,13 @@ sleutels die op servers staan waar zij geen toegang tot hebben.
 \label{sec:terugtrekken-van-sleutels-in-een-wot}
 
 Het verlies van een sleutel en het wachtwoord dat hieraan gelinkt is, heeft tot
-gevolg dat eenieder die hier toegang tot heeft, alle data kan decrypteren die
+gevolg dat eenieder die hier toegang tot heeft alle data kan decrypteren die
 met de publieke sleutel is geëncrypteerd. Verder kunnen digitale handtekeningen
-gemaakt worden. Ook bestaat de kans dat entiteiten blijven data encrypteren met de
-verloren publieke sleutel die je niet meer kunt decrypteren door een gebrek aan
-private sleutel.
+gemaakt worden. Ook bestaat de kans dat entiteiten blijven data encrypteren met
+het publieke deel van de verloren sleutel die je niet meer kunt decrypteren
+door een gebrek aan private sleutel.
+
+\subsection{Revocation certificate}
 
 Om dit probleem op te lossen bestaat het revocation certificate. Een revocation
 certificate kan enkel gegenereerd worden met de private sleutel. Wanneer een
@@ -138,7 +141,7 @@ $ gpg --refresh-keys
 \end{lstlisting}
 
 Men kan ook een daemon gebruiken zoals parcimonie om de sleutels op de ring te
-updaten zonder aan de keyservers te tonen welke sleutels je geïnteresseerd in
+updaten zonder aan de keyservers te tonen in welke sleutels je geïnteresseerd
 bent. Dit systeem werkt via \gls{TOR}. Anonimiteit bij het gebruik van een Web Of
 Trust valt echter buiten het domein van deze bachelorproef
 \autocite{RiseUpOpenPGPBestPractices}.
@@ -150,25 +153,26 @@ De Web Of Trust implementatie leidt tot het oplossen van \gls{authenticiteit},
 \gls{integriteit} en \gls{toerekenbaarheid}. Een identiteit kan bewijzen wie hij of
 zij is
 door het ondertekenen van data doordat het bezit van de private sleutel en
-wachtwoord de authenticatie bevestigd. \Gls{integriteit} van data kan bewezen
+wachtwoord de authenticatie bevestigt. \Gls{integriteit} van data kan bewezen
 worden
 door de handtekening van een bericht te valideren. Het ondertekenen van een
 bericht of contract kan niet ontkend worden doordat een handtekening enkel
-succesvol gevalideerd kan worden via een unieke sleutel en dan de enige persoon
+succesvol gevalideerd kan worden via een unieke sleutel en doordat de enige
+persoon
 met toegang tot de private sleutel en het wachtwoord hiervan, de eigenaar van de
 sleutel is.
 
 Specifiek zou dit het volgende oplossen in het voorbeeldverhaal. Wanneer Thomas
-aan Jim beveelt om betaling te verrichten en hij later door heeft dat hij zich
+aan Jim beveelt om betaling te verrichten en hij later doorheeft dat hij zich
 vergist heeft, kan hij niet ontkennen dat hij de betaling aangevraagd heeft. Dit
 zuivert Jim van blaam. Hiervoor is echter vereist dat Thomas het bericht waarin
-hij de betaling aanvraagt, ondertekend. Het is daarom ook best als alle
-communicatie in het bedrijf verplicht standaard digitaal ondertekend zijn.
+hij de betaling aanvraagt, ondertekent. Het is daarom ook best als alle
+communicatie in het bedrijf verplicht standaard digitaal ondertekend is.
 
 In het geval dat een impersonator van Thomas probeert om Jim te overtuigen om
 een betaling te doen, zal Jim vragen voor een digitaal ondertekend bericht als
 bevestiging. Een impersonator zal geen toegang hebben tot de private sleutel van
-Thomas en dus geen digitale handtekening kunnen maken hiermee. Dit zou het einde
+Thomas en dus hiermee geen digitale handtekening kunnen. Dit zou het einde
 moeten zijn van deze soort fraude. Indien de impersonator toegang zou hebben tot
 de private sleutel van Thomas en het wachtwoord hiervan, dan zijn er zeer grote
 consequenties. Het veiligstellen van de sleutels en wachtwoord is een apart

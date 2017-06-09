@@ -24,13 +24,15 @@ sleutel op het certificaat.
 \label{sec:problemen-met-certificaatautoriteiten}
 
 Het gehele systeem van een vertrouwde derde partij staat en valt bij het juiste
-handelen van deze partij. Van elke CA wordt verwacht dat zij enkel certificaten
-uitreiken aan de geverifieerde eigenaar van een entiteit. Wanneer een CA een
+handelen van deze partij. Van elke \gls{CA} wordt verwacht dat zij enkel
+certificaten uitreiken aan de geverifieerde eigenaar van een entiteit. Wanneer
+een \gls{CA} een
 certificaat uitreikt dan zal dit certificaat vertrouwd worden ongeacht de
 toestemming van de eigenaar van de entiteit.
 
-Gevallen van onrechtmatige uitgave van certificaten komen voor en worden actief
-gebruikt. In augustus 2011 werd vastgesteld dat een CA in Nederland, DigiNotar,
+Gevallen van onrechtmatige uitgave van certificaten komen voor en deze
+certificaten worden actief misbruikt. In augustus 2011 werd vastgesteld dat een
+\gls{CA} in Nederland, DigiNotar,
 slachtoffer was geworden van een hack waarbij alle acht signing servers waren
 gecompromitteerd. Er waren certificaten voor *.google.com gemaakt alsook
 certificaten voor Yahoo, Mozilla, WordPress en The Tor Project. In totaal werden
@@ -42,13 +44,15 @@ ongeoorloofd aanmaken van certificaten \autocite{DiginotarNu,
 	DigiNotarThreatpost, DigiNotarComputerworld, DigiNotarSchneier,
 	DigiNotarTweakers}.
 
-Op 25 juni 2014 gaf een CA in India certificaten uit voor 45 Google domeinen
-waarna deze op de 2de juli werden ontdekt. Google heeft bijgevolg het volledig
-vertrouwen in de certificaat autoriteiten opgezegd \autocite{Wilson2014}.
+Op 25 juni 2014 gaf een \gls{CA} in India certificaten uit voor 45 Google
+domeinen
+waarna deze op 2 juli werden ontdekt. Google heeft bijgevolg het volledig
+vertrouwen in de certificaatautoriteiten opgezegd \autocite{Wilson2014}.
 
-Verder onregelmatigheden gebeurden met de WoSign CA die certificaten aanmaakte
+Verder onregelmatigheden gebeurden met de WoSign \gls{CA} die certificaten
+aanmaakte
 met de verkeerde uitgavedatums om de restrictie op SHA1 te ontlopen. WoSign
-kocht ook een andere CA op zonder dit publiek te maken. Een combinatie met
+kocht ook een andere \gls{CA} op zonder dit publiek te maken. Een combinatie met
 andere gevallen van wangedrag leidde tot het stoppen van het vertrouwen in beide
 CAs waarin oude certificaten nog beperkt geldig zullen zijn. Het vertrouwen in
 beide CAs wordt volledig uitgefaseerd  \autocite{WoSignMozilla, WoSignTweakers1,
